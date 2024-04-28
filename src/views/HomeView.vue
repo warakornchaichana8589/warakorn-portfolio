@@ -1,9 +1,11 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+
+import AppLayout from '../components/LayoutPage/AppLayout.vue'
+import HeroSection from '../components/HeroSection.vue'
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <AppLayout>
+    <HeroSection/>
+  </AppLayout>
 </template>
