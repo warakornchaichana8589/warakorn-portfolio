@@ -1,5 +1,8 @@
 @import './base.css';
 
 :root{
-  --primary-background : #111529;
+  --bg-primary : #F6F6F6;
+}
+body{
+  font-family: "Poppins", sans-serif;
 }

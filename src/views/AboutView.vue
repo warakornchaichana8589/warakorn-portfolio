@@ -1,9 +1,14 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <AppLayout>
+    <div class="container p-5 mx-auto">
+      <h1>About Page</h1>
+    </div>
+    
+  </AppLayout>
 </template>
-
+<script setup>
+import AppLayout from '../components/LayoutPage/AppLayout.vue'
+</script>
 <style>
 @media (min-width: 1024px) {
   .about {
