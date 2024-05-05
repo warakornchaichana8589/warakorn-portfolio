@@ -27,6 +27,7 @@ const router = createRouter({
       name: 'all-projects',
       component: AllProjectsView
     }
+   
   ]
 })
 

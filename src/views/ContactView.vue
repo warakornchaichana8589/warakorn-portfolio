@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-import AppLayout from '../components/LayoutPage/AppLayout.vue'
+import AppLayout from '@/components/LayoutPage/AppLayout.vue'
 </script>
 
 <style scoped>

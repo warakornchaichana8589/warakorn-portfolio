@@ -7,12 +7,11 @@
       <div class="w-auto flex mr-auto h-full">
         <div
           class="bg-[#0000009f] flex justify-center items-center h-screen fixed top-0 left-0"
-         @mouseover="togglerLink"
+          @mouseover="togglerLink"
         >
           <label
             for="my-drawer"
             class="bg-[#00000000] hover:bg-[#00000015] cursor-pointer p-4"
-            
           >
             <svg
               class="w-8 h-8 text-white dark:text-white"
@@ -34,6 +33,7 @@
         </div>
 
         <RouterView />
+        
       </div>
     </div>
     <div class="drawer-side">
@@ -89,7 +89,10 @@
         <footer class="footer footer-center p-10 flex flex-col mt-auto">
           <nav>
             <div class="grid grid-flow-col gap-4">
-              <a href="tel:0938209899" class=" rounded-full hover:bg-[#dddddd3b] p-3">
+              <a
+                href="tel:0938209899"
+                class="rounded-full hover:bg-[#dddddd3b] p-3"
+              >
                 <svg
                   class="w-7 h-7 text-gray-800 dark:text-white"
                   aria-hidden="true"
@@ -106,7 +109,11 @@
                   />
                 </svg>
               </a>
-              <a href="#" target="_blank" class=" rounded-full hover:bg-[#dddddd3b] p-3">
+              <a
+                href="#"
+                target="_blank"
+                class="rounded-full hover:bg-[#dddddd3b] p-3"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
