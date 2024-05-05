@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import { db } from "@/firebase";
+import { useRouter } from 'vue-router';
 import {
   collection,
   getDocs,
@@ -26,12 +27,14 @@ export const useDatabaseStore = defineStore("store", {
         console.error('Error fetching data:', error);
       }
     },
-    async addUser(user) {
+    async addUser(user, router) {
       try {
         const docRef = await addDoc(collection(db, "users"), user);
         await this.fetchData();
+        await router.push('/all-projects');
       } catch (error) {
         console.error('Error adding document:', error);
+        alert(error);
       }
     },
     async deleteUser(userId) {

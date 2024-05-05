@@ -1,5 +1,5 @@
 <template >
-  <main class="ml-[72px] w-full">
+  <main class="w-full ml-[64px] 2xl:ml-0">
     <slot />
   </main>
 </template>
