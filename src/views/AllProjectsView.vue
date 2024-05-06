@@ -6,16 +6,16 @@
         <RouterLink
           class="btn btn-primary px-8 font-bold hover:text-green-200"
           to="/add-user"
-          >
-          +ADD IMAGE
-          </RouterLink
         >
+          +ADD PROJECT
+        </RouterLink>
       </div>
       <div class="w-full h-full grid grid-cols-3 gap-4">
-        <RouterLink
+        <div 
           class="hover:backdrop-saturate-50"
           v-for="(item, index) in data"
           :key="index"
+          :href="item.link_project"
         >
           <div
             class="mockup-window border border-base-300 hover:bg-gray-100 h-full"
@@ -23,20 +23,24 @@
             <div
               class="flex justify-center flex-col px-2 py-2 border-t border-base-300 items-center gap-2 h-full"
             >
-              <img
+              <p>{{ item.name }}</p>
+              <a :href="item.link_project">
+                <img
                 v-if="item.image_url"
                 :src="item.image_url"
                 alt="Webpage Screenshot"
                 class="h-full"
               />
               <span v-else>ไม่มีรูปภาพ</span>
+              </a>
+             
 
               <button @click="deleteUsers(item.id)" class="btn mx-auto">
                 Delete
               </button>
             </div>
           </div>
-        </RouterLink>
+        </div>
       </div>
       <div class="w-full flex justify-center mt-10 mb-5">
         <div class="join">

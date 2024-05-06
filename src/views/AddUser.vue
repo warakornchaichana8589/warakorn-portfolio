@@ -1,9 +1,7 @@
-
-
 <template>
   <AppLayout>
     <div class="container p-5 mx-auto">
-      <h1 class="h1 text-2xl font-bold mb-3">Add User Page</h1>
+      <h1 class="h1 text-2xl font-bold mb-3">Add Project</h1>
     </div>
 
     <form class="max-w-sm mx-auto">
@@ -40,6 +38,21 @@
         <label
           for="message"
           class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >LINK PROJECT</label
+        >
+        <input
+          type="text"
+          id="message"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          required
+          v-model="Form.link_project"
+        />
+      </div>
+
+      <div class="mb-5">
+        <label
+          for="message"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >MESSAGE</label
         >
         <input
@@ -61,25 +74,26 @@
     </form>
   </AppLayout>
 </template>
-  <script setup>
+<script setup>
 import AppLayout from "@/components/LayoutPage/AppLayout.vue";
-import { useRouter } from 'vue-router';
+import { useRouter } from "vue-router";
 import { useDatabaseStore } from "../stores/Firebase";
+import { ref } from "vue";
 const router = useRouter();
 const store = useDatabaseStore();
 const Form = ref({
   name: "",
   image_url: "",
   message: "",
+  link_project: "",
 });
 const addUser = async () => {
   const userData = {
     name: Form.value.name,
     image_url: Form.value.image_url,
     message: Form.value.message,
+    link_project: Form.value.link_project,
   };
-  await store.addUser(userData,router);
+  await store.addUser(userData, router);
 };
-import { ref } from "vue";
 </script>
-   
