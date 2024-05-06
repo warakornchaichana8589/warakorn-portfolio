@@ -62,11 +62,24 @@
   </AppLayout>
 </template>
   <script setup>
+import { onMounted, ref } from 'vue';
 import AppLayout from "@/components/LayoutPage/AppLayout.vue";
 import { useRouter } from 'vue-router';
 import { useDatabaseStore } from "../stores/Firebase";
+
+import { auth } from '@/firebase';
 const router = useRouter();
 const store = useDatabaseStore();
+
+onMounted(() => {
+  const unsubscribe = auth.onAuthStateChanged((user) => {
+    if (!user) {
+      router.replace('/login');
+      alert("You don't have permission");
+    }
+  });
+})
+
 const Form = ref({
   name: "",
   image_url: "",
@@ -80,6 +93,5 @@ const addUser = async () => {
   };
   await store.addUser(userData,router);
 };
-import { ref } from "vue";
 </script>
    

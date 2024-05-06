@@ -54,6 +54,7 @@
             alt=""
           />
         </RouterLink>
+        <Loguot />
         <li>
           <RouterLink
             to="/"
@@ -138,6 +139,7 @@
 </template>
 
 <script setup>
+import Loguot from "./components/Loguot.vue";
 import { ref } from "vue";
 const closeSidebar = ref(null);
 
