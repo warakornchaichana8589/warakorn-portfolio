@@ -8,7 +8,6 @@ const store = useDatabaseStore();
 
 const logOut = async () => {
   const log_out = await store.userLogout();
-  console.log(log_out);
 }
 </script>
 

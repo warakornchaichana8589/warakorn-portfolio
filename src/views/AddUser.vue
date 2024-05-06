@@ -88,7 +88,7 @@ onMounted(() => {
   const unsubscribe = auth.onAuthStateChanged((user) => {
     if (!user) {
       router.replace('/login');
-      alert("You don't have permission");
+      
     }
   });
 })

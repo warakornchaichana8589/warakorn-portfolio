@@ -34,8 +34,11 @@
             class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             v-model="login.password"
           />
-          <div @click="toggle_hidden_password" class="-ml-10 cursor-pointer absolute right-2 top-1/4">
-            <IconEye  v-if="!hidden_password" />
+          <div
+            @click="toggle_hidden_password"
+            class="-ml-10 cursor-pointer absolute right-2 top-1/4"
+          >
+            <IconEye v-if="!hidden_password" />
             <IconEyeSlash v-else />
           </div>
         </div>
@@ -57,17 +60,27 @@ import { useRouter } from "vue-router";
 import { useDatabaseStore } from "../stores/Firebase";
 import IconEye from "@/components/icons/IconEye.vue";
 import IconEyeSlash from "@/components/icons/IconEyeSlash.vue";
-import { ref } from "vue";
+import { useAlertStore } from "@/stores/Action";
+import { auth } from '@/firebase';
+import { ref, onMounted } from "vue";
+
+onMounted(() => {
+  const unsubscribe = auth.onAuthStateChanged((user) => {
+    if (user) {
+      router.replace('/');
+    }
+  });
+})
+
+
+
+const alertStore = useAlertStore();
 const hidden_password = ref(true);
 const toggle_hidden_password = () => {
   hidden_password.value = !hidden_password.value;
-  typePassword.value = hidden_password.value ? 'password' : 'text'
+  typePassword.value = hidden_password.value ? "password" : "text";
 };
-const typePassword = ref('password');
-
-
-  
-
+const typePassword = ref("password");
 const router = useRouter();
 const store = useDatabaseStore();
 const login = ref({
@@ -76,16 +89,20 @@ const login = ref({
 });
 
 const loginUser = async () => {
-  const sendLogin = await store.userLogin(
-    login.value.email,
-    login.value.password
-    
-  );
- 
-  if (sendLogin.status === "ok") {
-    router.push("/add-user");
+  alertStore.showAlert();
+  if (login.value.email.trim() && login.value.password.trim() !== "") {
+    const sendLogin = await store.userLogin(
+      login.value.email,
+      login.value.password
+    );
+    if (sendLogin.status === "ok") {
+      alertStore.hideAlert();
+      router.push("/add-user");
+    } else {
+      alertStore.hideAlert();
+    }
   } else {
-    console.log('reset')
+    alertStore.hideAlert();
   }
 };
 </script>

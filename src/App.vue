@@ -31,9 +31,14 @@
             </svg>
           </label>
         </div>
-
+        <div class="w-full h-full flex items-center justify-center fixed bg-slate-900/[.9] z-10" v-show="alertStore.showAlertState">
+          <div
+            class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-white motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white"
+            role="status"
+          >
+          </div>
+        </div>
         <RouterView />
-        
       </div>
     </div>
     <div class="drawer-side">
@@ -54,7 +59,8 @@
             alt=""
           />
         </RouterLink>
-        <Loguot />
+        <Loguot v-if="btn_login_logout" />
+        <RouterLink v-else to="/login" class="btn btn-danger">Login</RouterLink>
         <li>
           <RouterLink
             to="/"
@@ -140,14 +146,26 @@
 
 <script setup>
 import Loguot from "./components/Loguot.vue";
-import { ref } from "vue";
-
-
+import { onMounted, ref, computed } from "vue";
+import { auth } from "@/firebase";
+import { useAlertStore } from "./stores/Action";
 const closeSidebar = ref(null);
+const alertStore = useAlertStore();
 
 const togglerLink = () => {
   closeSidebar.value.click();
 };
+const btn_login_logout = ref(null);
+
+onMounted(() => {
+  const unsubscribe = auth.onAuthStateChanged((user) => {
+    if (!user) {
+      btn_login_logout.value = false;
+    } else {
+      btn_login_logout.value = true;
+    }
+  });
+});
 </script>
 
 <style scoped>
