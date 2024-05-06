@@ -11,7 +11,7 @@
         >
           <label
             for="my-drawer"
-            class="bg-[#00000000] hover:bg-[#00000015] cursor-pointer p-4"
+            class="bg-[#00000000] hover:bg-[#00000015] cursor-pointer p-4 relative z-9"
             @click="togglerLink"
           >
             <svg
@@ -32,12 +32,14 @@
             </svg>
           </label>
         </div>
-        <div class="w-full h-full flex items-center justify-center fixed bg-slate-900/[.9] z-10" v-show="alertStore.showAlertState">
+        <div
+          class="w-full h-full flex items-center justify-center fixed bg-slate-900/[.9] z-10"
+          v-show="alertStore.showAlertState"
+        >
           <div
             class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-white motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white"
             role="status"
-          >
-          </div>
+          ></div>
         </div>
         <RouterView />
       </div>
@@ -147,16 +149,17 @@
 
 <script setup>
 import Loguot from "./components/Loguot.vue";
-import { onMounted, ref, computed } from "vue";
+import { onMounted, ref } from "vue";
 import { auth } from "@/firebase";
 import { useAlertStore } from "./stores/Action";
-const closeSidebar = ref(null);
+
 const alertStore = useAlertStore();
+const closeSidebar = ref(null);
+const btn_login_logout = ref(null);
 
 const togglerLink = () => {
   closeSidebar.value.click();
 };
-const btn_login_logout = ref(null);
 
 onMounted(() => {
   const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -169,8 +172,8 @@ onMounted(() => {
 });
 
 window.addEventListener("load", function () {
-  alertStore.hideAlert()
-})
+  alertStore.hideAlert();
+});
 
 </script>
 
