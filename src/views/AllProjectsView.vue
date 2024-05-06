@@ -6,10 +6,9 @@
         <RouterLink
           class="btn btn-primary px-8 font-bold hover:text-green-200"
           to="/add-user"
-          >
-          +ADD IMAGE
-          </RouterLink
         >
+          +ADD PROJECT
+        </RouterLink>
       </div>
       <div class="w-full h-full grid grid-cols-3 gap-4">
         <div
@@ -24,8 +23,9 @@
             <div
               class="flex justify-center flex-col px-2 py-2 border-t border-base-300 items-center gap-2 h-full"
             >
-            <a href="#">
-              <img
+              <p>{{ item.name }}</p>
+              <a :href="item.link_project">
+                <img
                 v-if="item.image_url"
                 :src="item.image_url"
                 alt="Webpage Screenshot"

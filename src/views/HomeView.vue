@@ -3,7 +3,7 @@
 <template>
   <AppLayout>
     <div class="container p-5 mx-auto">
-      <h1>test</h1>
+      <h1>HOME PAGE</h1>
     </div>
   </AppLayout>
 </template>
