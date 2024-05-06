@@ -141,6 +141,8 @@
 <script setup>
 import Loguot from "./components/Loguot.vue";
 import { ref } from "vue";
+
+
 const closeSidebar = ref(null);
 
 const togglerLink = () => {

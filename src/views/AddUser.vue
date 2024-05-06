@@ -74,11 +74,13 @@
     </form>
   </AppLayout>
 </template>
-<script setup>
+  <script setup>
+import { onMounted, ref } from 'vue';
 import AppLayout from "@/components/LayoutPage/AppLayout.vue";
 import { useRouter } from "vue-router";
 import { useDatabaseStore } from "../stores/Firebase";
-import { ref } from "vue";
+
+import { auth } from '@/firebase';
 const router = useRouter();
 const store = useDatabaseStore();
 
