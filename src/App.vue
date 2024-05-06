@@ -12,6 +12,7 @@
           <label
             for="my-drawer"
             class="bg-[#00000000] hover:bg-[#00000015] cursor-pointer p-4"
+            @click="togglerLink"
           >
             <svg
               class="w-8 h-8 text-white dark:text-white"
@@ -166,6 +167,11 @@ onMounted(() => {
     }
   });
 });
+
+window.addEventListener("load", function () {
+  alertStore.hideAlert()
+})
+
 </script>
 
 <style scoped>
