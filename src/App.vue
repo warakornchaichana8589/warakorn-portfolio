@@ -1,18 +1,17 @@
 <template>
   <div class="drawer">
-    <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+    <input id="my-drawer" type="checkbox" class="drawer-toggle" v-model="checkedToggle" />
     <div class="drawer-content">
       <!-- Page content here -->
-
       <div class="w-auto flex mr-auto h-full">
         <div
+          @click="toggleChecked"
           class="bg-[#0000009f] flex justify-center items-center h-screen fixed top-0 left-0"
-          @mouseover="togglerLink"
         >
           <label
             for="my-drawer"
             class="bg-[#00000000] hover:bg-[#00000015] cursor-pointer p-4 relative z-9"
-            @click="togglerLink"
+            @click="toggleChecked"
           >
             <svg
               class="w-8 h-8 text-white dark:text-white"
@@ -31,6 +30,7 @@
               />
             </svg>
           </label>
+          
         </div>
         <div
           class="w-full h-full flex items-center justify-center fixed bg-slate-900/[.9] z-10"
@@ -48,9 +48,7 @@
       <label
         for="my-drawer"
         aria-label="close sidebar"
-        class="drawer-overlay"
-        ref="closeSidebar"
-      ></label>
+        class="drawer-overlay"></label>
       <ul
         class="menu p-4 w-80 min-h-full bg-base-200 text-base-content bg-[#F6F6F6] relative"
       >
@@ -68,7 +66,7 @@
           <RouterLink
             to="/"
             class="w-full hover:text-orange-400"
-            @click="togglerLink"
+            @click="toggleChecked"
             >Home</RouterLink
           >
         </li>
@@ -76,7 +74,7 @@
           <RouterLink
             to="/about"
             class="w-full hover:text-orange-400"
-            @click="togglerLink"
+            @click="toggleChecked"
             >ABOUT US</RouterLink
           >
         </li>
@@ -84,7 +82,7 @@
           <RouterLink
             to="/all-projects"
             class="w-full hover:text-orange-400"
-            @click="togglerLink"
+            @click="toggleChecked"
             >ALL PROJECTS</RouterLink
           >
         </li>
@@ -92,7 +90,7 @@
           <RouterLink
             to="/contact"
             class="w-full hover:text-orange-400"
-            @click="togglerLink"
+            @click="toggleChecked"
             >CONTACT</RouterLink
           >
         </li>
@@ -152,15 +150,15 @@ import Loguot from "./components/Loguot.vue";
 import { onMounted, ref } from "vue";
 import { auth } from "@/firebase";
 import { useAlertStore } from "./stores/Action";
-
 const alertStore = useAlertStore();
-const closeSidebar = ref(null);
 const btn_login_logout = ref(null);
+const checkedToggle = ref(false);
 
-const togglerLink = () => {
-  closeSidebar.value.click();
-};
 
+function toggleChecked() {
+  checkedToggle.value = !checkedToggle.value
+
+}
 onMounted(() => {
   const unsubscribe = auth.onAuthStateChanged((user) => {
     if (!user) {

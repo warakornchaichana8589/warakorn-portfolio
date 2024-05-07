@@ -10,7 +10,7 @@
           +ADD PROJECT
         </RouterLink>
       </div>
-      <div class="w-full h-full grid grid-cols-3 gap-4">
+      <div class="w-full h-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <div
           class="hover:backdrop-saturate-50"
           v-for="(item, index) in data"
@@ -21,7 +21,7 @@
             class="mockup-window border border-base-300 hover:bg-gray-100 h-full"
           >
             <div
-              class="flex justify-center flex-col px-2 py-2 border-t border-base-300 items-center gap-2 h-full"
+              class="flex justify-between flex-col px-2 py-2 border-t border-base-300 items-center gap-2 h-full"
             >
               <p>{{ item.name }}</p>
               <a :href="item.link_project">
@@ -78,3 +78,10 @@ const addUser = async (userId) => {
   data.value = store.items;
 };
 </script>
+<style  scoped>
+div{
+  transition: all 0.5s;
+}
+</style>
+
+

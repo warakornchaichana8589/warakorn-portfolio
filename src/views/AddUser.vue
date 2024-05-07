@@ -1,10 +1,10 @@
 <template>
-  <AppLayout>
-    <div class="container p-5 mx-auto">
-      <h1 class="h1 text-2xl font-bold mb-3">Add Project</h1>
+  <AppLayout class=" h-screen w-full flex flex-col justify-center itens-center">
+    <div class="container p-5 mx-auto w-full flex">
+      <h1 class="h1 text-2xl font-bold mb-3 mx-auto">Add Project</h1>
     </div>
 
-    <form class="max-w-sm mx-auto">
+    <form class="max-w-sm mx-auto zoomIn w-1/2">
       <div class="mb-5">
         <label
           for="name"
@@ -63,14 +63,16 @@
           v-model="Form.message"
         />
       </div>
-
-      <button
+<div class="flex justify-end ">
+  <button
         type="button"
         @click="addUser"
         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
       >
         SEND
       </button>
+</div>
+      
     </form>
   </AppLayout>
 </template>
