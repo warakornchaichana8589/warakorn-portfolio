@@ -11,11 +11,11 @@
       <div class="w-auto flex mr-auto h-full flex-col sm:flex-row">
         <div
           @click="toggleChecked"
-          class="sm:bg-[#0000009f] bg-transparent flex sm:justify-center items-center justify-end h-auto w-auto sticky top-0 sm:h-screen sm:fixed sm:top-0 sm:left-0 z-10"
+          class="sm:bg-[#0000009f] bg-transparent flex sm:justify-center items-center justify-end h-auto w-auto fixed top-0 sm:h-screen sm:fixed sm:top-0 sm:left-0 z-10"
         >
           <label
             for="my-drawer"
-            class="bg-[#00000000] hover:bg-[#00000015] cursor-pointer p-4 relative z-30"
+            class="bg-[#00000000] cursor-pointer p-4 relative z-30"
             @click="toggleChecked"
           >
             <svg

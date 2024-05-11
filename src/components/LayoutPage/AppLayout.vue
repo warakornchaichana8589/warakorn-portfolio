@@ -1,5 +1,5 @@
 <template >
-  <main class="w-full sm:ml-[64px] 2xl:ml-0">
+  <main class="w-full h-full sm:ml-[64px] 2xl:ml-0 mt-[64px]">
     <slot />
   </main>
 </template>
