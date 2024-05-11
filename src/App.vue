@@ -1,20 +1,25 @@
 <template>
   <div class="drawer">
-    <input id="my-drawer" type="checkbox" class="drawer-toggle" v-model="checkedToggle" />
+    <input
+      id="my-drawer"
+      type="checkbox"
+      class="drawer-toggle"
+      v-model="checkedToggle"
+    />
     <div class="drawer-content">
       <!-- Page content here -->
-      <div class="w-auto flex mr-auto h-full">
+      <div class="w-auto flex mr-auto h-full flex-col sm:flex-row">
         <div
           @click="toggleChecked"
-          class="bg-[#0000009f] flex justify-center items-center h-screen fixed top-0 left-0"
+          class="sm:bg-[#0000009f] bg-transparent flex sm:justify-center items-center justify-end h-auto w-auto sticky top-0 sm:h-screen sm:fixed sm:top-0 sm:left-0 z-10"
         >
           <label
             for="my-drawer"
-            class="bg-[#00000000] hover:bg-[#00000015] cursor-pointer p-4 relative z-9"
+            class="bg-[#00000000] hover:bg-[#00000015] cursor-pointer p-4 relative z-30"
             @click="toggleChecked"
           >
             <svg
-              class="w-8 h-8 text-white dark:text-white"
+              class="w-8 h-8 sm:text-white dark:text-white text-dark"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -30,7 +35,6 @@
               />
             </svg>
           </label>
-          
         </div>
         <div
           class="w-full h-full flex items-center justify-center fixed bg-slate-900/[.9] z-10"
@@ -48,9 +52,10 @@
       <label
         for="my-drawer"
         aria-label="close sidebar"
-        class="drawer-overlay"></label>
+        class="drawer-overlay"
+      ></label>
       <ul
-        class="menu p-4 w-80 min-h-full bg-base-200 text-base-content bg-[#F6F6F6] relative"
+        class="menu p-4 w-80 min-h-full text-base-content bg-[#F6F6F6] relative z-30"
       >
         <!-- Sidebar content here -->
         <RouterLink to="/" class="logo">
@@ -154,10 +159,8 @@ const alertStore = useAlertStore();
 const btn_login_logout = ref(null);
 const checkedToggle = ref(false);
 
-
 function toggleChecked() {
-  checkedToggle.value = !checkedToggle.value
-
+  checkedToggle.value = !checkedToggle.value;
 }
 onMounted(() => {
   const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -172,7 +175,6 @@ onMounted(() => {
 window.addEventListener("load", function () {
   alertStore.hideAlert();
 });
-
 </script>
 
 <style scoped>
